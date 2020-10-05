@@ -1,22 +1,18 @@
-class api{
+export default class api{
 
-   pikachu = 1
+    #_pikachu = 1
 
     constructor(){
-        init(pikachu)
+      //  init(pikachu)
     }
 
-     getpokemon(id) {
+    async  getApiPokemon(pokemon) {
    
-        fetch('https://pokeapi.co/api/v2/pokemon/{id}')
-        .then((response) => response.JSON())
-        .then((data) => console.log(data) )
-        return data
-     }
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+      const response = await fetch(url)
+      const apipokemondata   = await response.json()
+      return apipokemondata
 
-  
-     init(id){
-       return getpokemon(id)
      }
 
 

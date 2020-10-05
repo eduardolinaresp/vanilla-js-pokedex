@@ -1,19 +1,24 @@
+import SERVICE from './service.js' 
 
-async function getpokemon(pokemon){
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
-    const response = await fetch(url)
-    const pokemondata   = await response.json()
-    return pokemondata
-    }
 
 async function init(){
+    let pokemon = null
     
-    const pokemon = await getpokemon(25)
+    try {
+        
+        const service = new SERVICE() 
+        pokemon = await service.getpokemon(25)
+        console.log(pokemon);
 
+    } catch (error) {
+        console.log(error)
+    }
+  
     window.pokemon_name.textContent = pokemon.name
     window.pokemon_img.setAttribute('src',pokemon.sprites.front_default) 
     updatePokemon(pokemon)
-    console.log(pokemon);
+    
+   
 }
 
 
@@ -28,7 +33,7 @@ async  function getnewpokemon(e){
   if (e.key === 'Enter') {
         console.log('Se presionó Enter')
         const pokemonname = window.search.value
-        const pokemon = await getpokemon(pokemonname)
+        const pokemon = await service.getpokemon(pokemonname)
         updatePokemon(pokemon)
      }
 }

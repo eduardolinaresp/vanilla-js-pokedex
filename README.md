@@ -10,6 +10,7 @@ Ejemplo comsumo api desde pokeapi.co
  # Push nuevo tag
 
   git push origin dev pokedex_js_one_file 
+  
 # Nuevos cambios
 
   git push origin dev
